@@ -5,6 +5,7 @@ import {
   Route,
 } from "react-router-dom";
 import { Login } from './modules/login/components';
+import { Dashboard } from './modules/dashboard/components';
 
 const App = () => (
   <div className="App">
@@ -14,6 +15,9 @@ const App = () => (
           <Suspense fallback={<>Loading...</>}>
             <Login />
           </Suspense>
+        </Route>
+        <Route path='/dashboard'>
+          <Dashboard />
         </Route>
       </Switch>
     </Router>

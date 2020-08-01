@@ -9,7 +9,7 @@ function* sagaWorker(action) {
         yield put(routine.request());
         const response = yield action.payload;
 
-        yield put(routine.success(response.data ? response.data : {}));
+        yield put(routine.success(response));
     } catch (error) {
         yield put(routine.failure(error.message));
     }
@@ -39,10 +39,10 @@ export function generateAsyncReducer(actionType) {
             case routineAction.TRIGGER:
                 return state;
             case routineAction.SUCCESS:
-                const payload = action.payload ? ((action.payload).data ? (action.payload).data : action.payload) : action.payload;
+                // const payload = action.payload ? ((action.payload).data ? (action.payload).data : action.payload) : action.payload;
                 return {
                     ...state,
-                    data: payload,
+                    data: action.payload,
                     status: 'SUCCESS'
                 };
             case routineAction.FAILURE:

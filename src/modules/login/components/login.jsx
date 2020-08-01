@@ -7,12 +7,12 @@ import { ReactComponent as Vogel } from '../../../assets/images/vogel.svg';
 import { ReactComponent as Globus } from '../../../assets/images/globus.svg';
 import { ReactComponent as Pipes } from '../../../assets/images/pipes.svg';
 import { ReactComponent as Calendar } from '../../../assets/images/calendar.svg';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
-const Login = () => {
+const Login = (props) => {
     const dispatch = useDispatch()
     const [isLoading, setLoading] = useState(false)
-    const { handleSubmit, errors, register } = useForm();
+    const { handleSubmit, register } = useForm();
     const [isTouched, setTouched] = useState({ isPasswordTouched: false, isEmailTouched: false });
 
     const onSubmit = ({ email, password }) => {
@@ -24,6 +24,10 @@ const Login = () => {
 
         dispatch(login(data)).payload.then(data => {
             setLoading(false)
+            console.log(data)
+            localStorage.setItem('token', data.token);
+            localStorage.setItem('id', data.user['_id']);
+            props.history.push('/dashboard')
         }).catch(e => {
             console.log(e);
             alert('error')
@@ -81,7 +85,9 @@ const Login = () => {
                                 />
                             </div>
                             <div className='loginPage__form__inputs__actions'>
-                                <button type="submit">Log In</button>
+                                <button type="submit">
+                                    {isLoading ? 'Loading' : 'Log In'}
+                                </button>
                                 <Link to='#'>Forgot your password?</Link>
                             </div>
                         </form>
@@ -100,4 +106,4 @@ const Login = () => {
     )
 }
 
-export default Login;
+export default withRouter(Login);

@@ -1,10 +1,5 @@
 import { UserActions } from "./consts";
-import { getUserService, loginService } from './services';
-
-export const getUser = () => ({
-    type: UserActions.getUser,
-    payload: getUserService()
-})
+import { loginService } from './services';
 
 export const login = (body) => ({
     type: UserActions.login,

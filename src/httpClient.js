@@ -1,7 +1,7 @@
 import Axios from 'axios';
 
 class HttpClient {
-    baseUrl = 'http://c371d892b104.ngrok.io';
+    baseUrl = 'http://69db1867ccc8.ngrok.io';
 
     constructor () {
         Axios.interceptors.response.use(async (config) => {

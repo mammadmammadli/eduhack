@@ -7,10 +7,11 @@ import { Provider } from 'react-redux';
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga'
 import { rootSaga } from './sagas';
-import { userReducers } from './modules/login/store/reducers';
+import { user } from './modules/dashboard/store/reducers';
+import { Router } from 'react-router-dom';
+import { createBrowserHistory } from 'history';
 
-
-const rootStore = combineReducers({ userReducers });
+const rootStore = combineReducers({ user });
 
 const composeEnhancers =
   typeof window === 'object' &&
@@ -32,7 +33,9 @@ sagaMiddleware.run(rootSaga)
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <Router history={createBrowserHistory()}>
+        <App />
+      </Router>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
