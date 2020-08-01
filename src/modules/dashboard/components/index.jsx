@@ -4,6 +4,7 @@ import { getUser } from '../store/actions';
 import {isSuccess } from '../../../utils';
 import { StudentPage } from './student/components';
 import { ProfessorPage } from './professor/components';
+import './index.scss';
 
 export const Dashboard = () => {
     const dispatch = useDispatch()
@@ -35,7 +36,7 @@ export const Dashboard = () => {
     }
 
     return (
-        <div>
+        <div className='dashboard'>
             {renderContent()}
         </div>
     )

@@ -1,7 +1,12 @@
 import React from 'react';
+import { SiderBar } from './sidebar';
+
+import './index.scss'
 
 export const StudentPage = () => {
     return (
-        <div>student page</div>
+        <div className='studentPage'>
+            <SiderBar />
+        </div>
     )
 }

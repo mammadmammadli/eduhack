@@ -1,0 +1,75 @@
+.sidebar {
+    width: 416px;
+    background: #fb614e;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 64px 0;
+    box-sizing: border-box;
+
+    &__logo {
+        svg {
+            height: 114px;
+            width: 122px;
+        }
+
+        span {
+            display: block;
+            text-align: center;
+            font-size: 23px;
+            line-height: 34px;
+        }
+    }
+
+    &__nav {
+        nav {
+            ul {
+                li {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin: 10px 0;
+
+                    a {
+                        color: #ddcaca;
+                        padding: 10px 20px;
+                        border-radius: 20px;
+                        text-decoration: none;
+                        font-size: 25px;
+                        line-height: 37px;
+                    }
+
+                    &.active {
+                        a {
+                            color: #fb614e;
+                            background-color: #ddcaca;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &__updates {
+        border-radius: 20px;
+        background-color: #fdba11;
+        padding: 22px 22px;
+
+        > span {
+            display: block;
+            padding: 0 20px;
+            font-size: 20px;
+            line-height: 30px;
+            color: #f6f5e7;
+        }
+
+        &__update {
+            height: 185px;
+            border-radius: 20px;
+            padding: 15px 20px;
+            background-color: #ddcaca;
+        }
+    }
+}
