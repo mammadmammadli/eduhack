@@ -1,18 +1,36 @@
 import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
 import './index.scss';
+import { useDispatch } from 'react-redux';
+import { login } from '../store/actions';
 
 const Login = () => {
+    const dispatch = useDispatch()
+    const [isLoading, setLoading] = useState(false)
     const { handleSubmit, errors, register } = useForm();
     const [isTouched, setTouched] = useState({ isPasswordTouched: false, isEmailTouched: false });
 
-    const onSubmit = values => {
-        console.log(values);
+    const onSubmit = ({ email, password }) => {
+        const data = {
+            email,
+            password
+        }
+        setLoading(true)
+
+        dispatch(login(data)).payload.then(data => {
+            setLoading(false)
+        }).catch(e => {
+            console.log(e);
+            alert('error')
+        })
     }
 
     return (
         <div className='loginPage'>
             <div className='loginPage__container'>
+                {isLoading && (
+                    <div>loading...</div>
+                )}
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <input
                         name="email"
