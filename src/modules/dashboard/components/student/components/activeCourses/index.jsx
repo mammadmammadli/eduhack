@@ -53,7 +53,7 @@ export const ActiveCourses = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {courses.map(({
+                            {courses && courses.length > 0 && courses.map(({
                                 professor,
                                 type,
                                 occurrence,
@@ -103,7 +103,7 @@ export const ActiveCourses = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {assignments.map(({
+                            {assignments && assignments.length > 0 && assignments.map(({
                                 title,
                                 due,
                                 course,

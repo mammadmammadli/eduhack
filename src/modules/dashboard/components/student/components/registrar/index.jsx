@@ -14,7 +14,9 @@ export const Registrar = () => {
 
     useEffect(
         () => {
-            dispatch(getAllCourses())
+            if (!isSuccess(allCoursesBranch)) {
+                dispatch(getAllCourses())
+            }
         },
         []
     )
@@ -45,7 +47,7 @@ export const Registrar = () => {
         if (userCourses && userCourses.length > 0 && userCourses.includes(id)) {
             callback = () => {
                 dispatch(unenrollCourse(id)).payload.then(_ => {
-                    const newUserData = {...data}
+                    const newUserData = { ...data }
 
                     newUserData.courses = newUserData.courses.filter(c => c != id);
 
@@ -62,7 +64,7 @@ export const Registrar = () => {
             content = <><span>Enroll</span> <GreenTri /></>
             callback = () => {
                 dispatch(enrollCourse(id)).payload.then(_ => {
-                    const newUserData = {...data};
+                    const newUserData = { ...data };
 
                     newUserData.courses.push(id);
 

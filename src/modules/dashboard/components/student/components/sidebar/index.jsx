@@ -34,7 +34,7 @@ export const SiderBar = withRouter(({ active, location }) => {
                             <File />
                         </li>
                         <li className={`${location.pathname === '/dashboard/courses' ? 'active' : null}`}>
-                            <Link to='courses'>
+                            <Link to='/dashboard/courses'>
                                 Courses
                             </Link>
                             <Books />

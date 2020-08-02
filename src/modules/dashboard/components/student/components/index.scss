@@ -1,7 +1,7 @@
 .studentPage {
     height: 100vh;
     display: flex;
-    background-color: #ddcaca;
+    background-color: #ffffff;
 
     &__content {
         padding: 75px 45px 0;
@@ -15,7 +15,7 @@
                 font-size: 28px;
                 line-height: 42px;
 
-                color: #fb7373;
+                color: #4147a2;
 
                 &:nth-child(2) {
                     width: 320px;
@@ -38,11 +38,11 @@
                 width: 150px;
                 border: 0;
                 outline: none;
-                background-color: #ee8e85;
+                background-color: #4147a2;
                 font-size: 20px;
 
                 &::placeholder {
-                    color: #ddcaca;
+                    color: #ffffff;
                 }
             }
         }
@@ -56,12 +56,12 @@
                 color: white;
                 text-align: center;
                 width: 100%;
-                background-color: #fdba11;
+                background-color: #e2d9ff;
             }
 
             &-table {
                 table {
-                    color: #fb614e;
+                    color: #11198B;
                     width: 100%;
 
                     thead {
@@ -69,7 +69,7 @@
 
                         th {
                             padding: 26px 0;
-                            border-bottom: 1px solid #fb7373;
+                            border-bottom: 1px solid #4147a2;
                         }
                     }
 
@@ -88,7 +88,7 @@
                                     background-color: transparent;
                                     display: flex;
                                     justify-content: center;
-                                    color: #FB614E;
+                                    color: #11198B;
 
                                     span {
                                         display: block;

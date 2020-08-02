@@ -5,6 +5,7 @@ import './index.scss'
 import { Switch, Route, BrowserRouter as Router, useRouteMatch } from 'react-router-dom';
 import { ActiveCourses } from './activeCourses';
 import { Registrar } from './registrar';
+import { Courses } from './courses';
 
 export const StudentPage = () => {
     const { path, url } = useRouteMatch()
@@ -21,6 +22,7 @@ export const StudentPage = () => {
                 <Switch>
                     <Route exact path={`${path}/registrar`} component={Registrar} />
                     <Route exact path={`${path}/`} component={ActiveCourses} />
+                    <Route exact path={`${path}/courses`} component={Courses} />
                     {/* <Route exact path={`${path}/courses`} component={Courses} /> */}
                 </Switch>
             </div>
