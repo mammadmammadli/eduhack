@@ -6,6 +6,8 @@ import { ReactComponent as Book } from '../../../../../../assets/emojies/book.sv
 import { ReactComponent as Calendar } from '../../../../../../assets/emojies/calendar.svg';
 import { detectDay, convertTime } from '../utils';
 
+const names = ['Abraham', 'Lincoln', 'Winston', 'Churcill']
+
 export const ActiveCourses = () => {
     const coursesBranch = useSelector(state => state.user.courses)
     const assignmentsBranch = useSelector(state => state.user.assignments)
@@ -63,13 +65,13 @@ export const ActiveCourses = () => {
                                 return (
                                     <tr key={i}>
                                         <td>{type}</td>
-                                        <td>{professor}</td>
+                                        <td>{names[i]}</td>
                                         <td>
                                             {convertTime(close.time)} / 
                                             {detectDay(close.day)} 
                                         </td>
                                         <td>
-                                            
+                                            Enter the lab in tomorrow
                                         </td>
                                     </tr>
                                 );
@@ -111,8 +113,11 @@ export const ActiveCourses = () => {
                                 return (
                                     <tr key={i}>
                                         <td>{title}</td>
-                                        <td>{due}</td>
-                                        <td>{course}</td>
+                                        <td>{names[i]}</td>
+                                        <td>12:00 AM /MON</td>
+                                        <td>
+                                            Enter the lab in tomorrow
+                                        </td>
                                     </tr>
                                 );
                             })}

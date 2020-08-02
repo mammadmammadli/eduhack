@@ -60,8 +60,10 @@
             }
 
             &-table {
+                width: 100%;
+            
                 table {
-                    color: #11198B;
+                    color: #11198b;
                     width: 100%;
 
                     thead {
@@ -78,7 +80,7 @@
                             td {
                                 padding: 13px 0;
                                 text-align: center;
-                            
+
                                 button {
                                     cursor: pointer;
                                     outline: none;
@@ -88,7 +90,7 @@
                                     background-color: transparent;
                                     display: flex;
                                     justify-content: center;
-                                    color: #11198B;
+                                    color: #11198b;
 
                                     span {
                                         display: block;
@@ -101,5 +103,40 @@
                 }
             }
         }
+    }
+}
+
+.announcements {
+    background-color: #e2d9ff;
+    border-radius: 20px;
+    text-align: center;
+    padding: 40px;
+
+    &__title {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        span {
+            margin-left: 10px;
+        }
+    }
+
+    &__inner {
+        border-radius: 20px;
+        background-color: white;
+
+        ul {
+            box-sizing: content-box;
+
+            li {
+                margin: 20px;
+            }
+        }
+    }
+
+    span {
+        display: block;
+        align-items: center;
     }
 }

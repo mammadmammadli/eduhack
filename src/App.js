@@ -3,6 +3,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
+  Redirect,
 } from "react-router-dom";
 import { Login } from './modules/login/components';
 import { Dashboard } from './modules/dashboard/components';
@@ -19,6 +20,7 @@ const App = () => (
         <Route path='/dashboard'>
           <Dashboard />
         </Route>
+        <Redirect to='/dashboard' />
       </Switch>
     </Router>
   </div>
