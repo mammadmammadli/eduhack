@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { isSuccess, isPending } from '../../../../../../utils';
-import { getAllCourses } from '../../store/actions';
+import { getAllCourses, unenrollCourse, enrollCourse } from '../../store/actions';
 import { convertTime, detectDay } from '../utils';
 import { ReactComponent as GreenTri } from '../../../../../../assets/images/greenTriangle.svg'
 import { ReactComponent as RedTri } from '../../../../../../assets/images/redTriangle.svg'
+import { getUser, updateUserCourses } from '../../../../store/actions';
 
 export const Registrar = () => {
     const allCoursesBranch = useSelector(state => state.user.allCourses)
@@ -15,7 +16,7 @@ export const Registrar = () => {
         () => {
             dispatch(getAllCourses())
         },
-        [dispatch]
+        []
     )
 
     const closeTime = (occurrences) => {
@@ -37,17 +38,41 @@ export const Registrar = () => {
     }
 
     const renderCourseButton = (id) => {
-        const { data: { courses: userCourses } } = userInfo
+        const { data: { courses: userCourses }, data } = userInfo
         let content = null
+        let callback = undefined
 
         if (userCourses && userCourses.length > 0 && userCourses.includes(id)) {
-            content = <><span>Uneroll</span> <RedTri /></>
+            callback = () => {
+                dispatch(unenrollCourse(id)).payload.then(_ => {
+                    const newUserData = {...data}
+
+                    newUserData.courses = newUserData.courses.filter(c => c != id);
+
+                    dispatch(updateUserCourses(newUserData))
+                })
+            }
+            content = (
+                <>
+                    <span>Uneroll</span>
+                    <RedTri />
+                </>
+            )
         } else {
             content = <><span>Enroll</span> <GreenTri /></>
+            callback = () => {
+                dispatch(enrollCourse(id)).payload.then(_ => {
+                    const newUserData = {...data};
+
+                    newUserData.courses.push(id);
+
+                    dispatch(updateUserCourses(newUserData))
+                })
+            }
         }
 
         return (
-            <button>
+            <button onClick={callback}>
                 {content}
             </button>
         )

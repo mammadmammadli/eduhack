@@ -1,5 +1,5 @@
 import { studentActions } from "./consts";
-import { getCoursesService, getAssignmentsService, getAllCourseService } from "./services";
+import { getCoursesService, getAssignmentsService, getAllCourseService, enrollCourseService, unenrollCourseService } from "./services";
 
 export const getCourses = () => ({
     type: studentActions.getCourses,
@@ -14,4 +14,14 @@ export const getAllCourses = () => ({
 export const getAssignments = () => ({
     type: studentActions.getAsignments,
     payload: getAssignmentsService()
+})
+
+export const enrollCourse = (id) => ({
+    type: studentActions.enrolCourse,
+    payload: enrollCourseService(id)
+})
+
+export const unenrollCourse = (id) => ({
+    type: studentActions.unenrollCourse,
+    payload: unenrollCourseService(id)
 })

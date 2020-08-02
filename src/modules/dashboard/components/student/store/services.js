@@ -29,3 +29,23 @@ export const getAllCourseService = () => {
         }
     });
 }
+
+export const enrollCourseService = (id) => {
+    const token = localStorage.getItem('token')
+
+    return httpClient.post(`student/enroll/${id}`, null, {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    });
+}
+
+export const unenrollCourseService = (id) => {
+    const token = localStorage.getItem('token')
+
+    return httpClient.post(`student/unenroll/${id}`, null, {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    });
+}

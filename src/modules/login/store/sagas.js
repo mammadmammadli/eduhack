@@ -8,4 +8,6 @@ export const userSaga = all([
     generateAsyncSagaWatcher(studentActions.getCourses),
     generateAsyncSagaWatcher(studentActions.getAsignments),
     generateAsyncSagaWatcher(studentActions.getAllCourses),
+    generateAsyncSagaWatcher(studentActions.enrolCourse),
+    generateAsyncSagaWatcher(studentActions.unenrollCourse),
 ])
