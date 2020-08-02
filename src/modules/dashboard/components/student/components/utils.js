@@ -1,7 +1,5 @@
 export const detectDay = (num) => {
     const current = new Date()
-    console.log(current.getDay())
-
 
     if (num === 0) {
         return 'MON'

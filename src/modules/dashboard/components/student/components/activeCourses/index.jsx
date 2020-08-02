@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getCourses } from '../../store/actions';
+import { getCourses, getAssignments } from '../../store/actions';
 import { isSuccess, isPending } from '../../../../../../utils';
 import { ReactComponent as Book } from '../../../../../../assets/emojies/book.svg';
 import { ReactComponent as Calendar } from '../../../../../../assets/emojies/calendar.svg';
@@ -8,11 +8,13 @@ import { detectDay, convertTime } from '../utils';
 
 export const ActiveCourses = () => {
     const coursesBranch = useSelector(state => state.user.courses)
+    const assignmentsBranch = useSelector(state => state.user.assignments)
     const dispatch = useDispatch()
 
     useEffect(
         () => {
             dispatch(getCourses())
+            dispatch(getAssignments())
         },
         [dispatch]
     )
@@ -85,6 +87,48 @@ export const ActiveCourses = () => {
         }
     }
 
+    const renderAssignments = () => {
+        if (isSuccess(assignmentsBranch)) {
+            const { data: assignments } = coursesBranch;
+
+            return (
+                <div className='studentPage__courses__table-table'>
+                    <table cellPadding={0} cellSpacing={0}>
+                        <thead>
+                            <tr>
+                                <th>Course Name / Type</th>
+                                <th>Professor</th>
+                                <th>Time / Date</th>
+                                <th>Time till class</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {assignments.map(({
+                                title,
+                                due,
+                                course,
+                            }, i) => {
+                                return (
+                                    <tr key={i}>
+                                        <td>{title}</td>
+                                        <td>{due}</td>
+                                        <td>{course}</td>
+                                    </tr>
+                                );
+                            })}
+                        </tbody>
+                    </table>
+                </div>
+            )
+        } else if (isPending(assignmentsBranch)) {
+            return (
+                <div className='studentPage__courses__table-loading'>
+                    Loading...
+                </div>
+            )
+        }
+    }
+
     return (
         <div className='studentPage__courses'>
             <div className='studentPage__courses__search'>
@@ -99,6 +143,8 @@ export const ActiveCourses = () => {
             <div className='studentPage__courses__table-title'>
                 <Calendar /> Assignment Schedule
             </div>
+
+            {renderAssignments()}
         </div>
     )
 }

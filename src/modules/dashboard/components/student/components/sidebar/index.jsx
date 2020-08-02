@@ -2,14 +2,12 @@ import React from 'react';
 
 import './index.scss';
 import { ReactComponent as Vogel } from '../../../../../../assets/images/vogel.svg';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { ReactComponent as Files } from '../../../../../../assets/images/files.svg'
 import { ReactComponent as File } from '../../../../../../assets/images/file.svg'
 import { ReactComponent as Books } from '../../../../../../assets/images/books.svg'
 
-export const SiderBar = ({ active }) => {
-    console.log(active)
-
+export const SiderBar = withRouter(({ active, location }) => {
     return (
         <div className='sidebar'>
             <div className='sidebar__logo'>
@@ -23,19 +21,19 @@ export const SiderBar = ({ active }) => {
             <div className='sidebar__nav'>
                 <nav>
                     <ul>
-                        <li className={`${active === '/dashboard' ? 'active' : null}`}>
-                            <Link to='/'>
+                        <li className={`${location.pathname === '/dashboard' ? 'active' : null}`}>
+                            <Link to='/dashboard'>
                                 Dashboard
                             </Link>
                             <Files />
                         </li>
-                        <li>
-                            <Link to='/'>
+                        <li className={`${location.pathname === '/dashboard/registrar' ? 'active' : null}`}>
+                            <Link to='/dashboard/registrar'>
                                 Registrar
                             </Link>
                             <File />
                         </li>
-                        <li className=''>
+                        <li className={`${location.pathname === '/dashboard/courses' ? 'active' : null}`}>
                             <Link to='courses'>
                                 Courses
                             </Link>
@@ -58,4 +56,4 @@ export const SiderBar = ({ active }) => {
             </div>
         </div>
     )
-}
+})

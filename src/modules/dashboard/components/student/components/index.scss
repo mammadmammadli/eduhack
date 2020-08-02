@@ -78,6 +78,23 @@
                             td {
                                 padding: 13px 0;
                                 text-align: center;
+                            
+                                button {
+                                    cursor: pointer;
+                                    outline: none;
+                                    padding: 13px 0;
+                                    width: 100%;
+                                    border: 0;
+                                    background-color: transparent;
+                                    display: flex;
+                                    justify-content: center;
+                                    color: #FB614E;
+
+                                    span {
+                                        display: block;
+                                        margin-right: 13px;
+                                    }
+                                }
                             }
                         }
                     }

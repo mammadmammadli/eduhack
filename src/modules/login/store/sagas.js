@@ -5,5 +5,7 @@ import { studentActions } from "../../dashboard/components/student/store/consts"
 
 export const userSaga = all([
     generateAsyncSagaWatcher(UserActions.getUser),
-    generateAsyncSagaWatcher(studentActions.getCourses)
+    generateAsyncSagaWatcher(studentActions.getCourses),
+    generateAsyncSagaWatcher(studentActions.getAsignments),
+    generateAsyncSagaWatcher(studentActions.getAllCourses),
 ])
