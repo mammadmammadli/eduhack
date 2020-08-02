@@ -1,4 +1,11 @@
 import { generateAsyncReducer } from "../../../utils";
 import { UserActions } from '../../login/store/consts';
+import { combineReducers } from "redux";
+import { courses } from "../components/student/store/reducers";
 
-export const user = generateAsyncReducer(UserActions.getUser);
+const info = generateAsyncReducer(UserActions.getUser)
+
+export const user = combineReducers({
+    info,
+    courses    
+});

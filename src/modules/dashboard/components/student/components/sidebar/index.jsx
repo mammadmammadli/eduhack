@@ -7,7 +7,9 @@ import { ReactComponent as Files } from '../../../../../../assets/images/files.s
 import { ReactComponent as File } from '../../../../../../assets/images/file.svg'
 import { ReactComponent as Books } from '../../../../../../assets/images/books.svg'
 
-export const SiderBar = () => {
+export const SiderBar = ({ active }) => {
+    console.log(active)
+
     return (
         <div className='sidebar'>
             <div className='sidebar__logo'>
@@ -21,20 +23,20 @@ export const SiderBar = () => {
             <div className='sidebar__nav'>
                 <nav>
                     <ul>
-                        <li>
-                            <Link>
+                        <li className={`${active === '/dashboard' ? 'active' : null}`}>
+                            <Link to='/'>
                                 Dashboard
                             </Link>
                             <Files />
                         </li>
                         <li>
-                            <Link>
+                            <Link to='/'>
                                 Registrar
                             </Link>
                             <File />
                         </li>
-                        <li className='active'>
-                            <Link>
+                        <li className=''>
+                            <Link to='courses'>
                                 Courses
                             </Link>
                             <Books />

@@ -8,7 +8,7 @@ import './index.scss';
 
 export const Dashboard = () => {
     const dispatch = useDispatch()
-    const userBranch = useSelector(state => state.user);
+    const userBranch = useSelector(state => state.user.info);
 
     useEffect(
         () => {
